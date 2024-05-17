@@ -10,7 +10,7 @@ namespace studying_c_sharp_mark_kotlobay.static_demo
     {
         public static void RunMe()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Hi");
         }
     }
 }
