@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace studying_c_sharp_mark_kotlobay.static_demo
 {
-    internal class Level1
+    public class Level1
     {
         public static void RunMe()
         {
-            Console.WriteLine("Hi");
+            Console.WriteLine("Hi, I am class Level1");
+            Level2.RunMe();
         }
     }
 }
