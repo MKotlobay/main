@@ -1,8 +1,8 @@
 ﻿using studying_c_sharp_mark_kotlobay.static_demo;
 
-internal class Program
+public class Program
 {
-    private static void Main(string[] args)
+    public static void Main(string[] args)
     {
         Level1.RunMe();
     }
