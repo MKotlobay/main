@@ -9,6 +9,8 @@ public class Program
 
         //TestBasicObject.Demo();
 
-        CarApp.CarGarageHome();
+        //CarApp.CarGarageHome();
+
+        StockExchange.StockMarket(); // Home work for 24.05.2024
     }
 }
