@@ -11,6 +11,7 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
     {
         public static void Test()
         {
+            #region Build console + override
             GameConsole sonyConsole = new GameConsole("sony", "PS5", "AC");
 
             sonyConsole.DisplayDetails();
@@ -18,12 +19,26 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
             sonyConsole.SetVersion(2);
 
             sonyConsole.DisplayDetails();
+            #endregion End build console + override
+
+            #region Upcasting / Downcasting && Using is
+            SmartTV SmartLGMonitor = new SmartTV(true, "lgMonitor", 100, "OLED75C3", "HDMI 2.1");
+            SmartLGMonitor.DisplaySmartFunction();
+
+            if (SmartLGMonitor is SmartTV)
+            {
+                Monitor lgMonitor = (Monitor)SmartLGMonitor; // Only possible to cast from lower to higher
+                lgMonitor.DisplayDetails();
+            }
+                
+
+            #endregion End Upcasting / Downcasting && Using is
         }
 
         private int id;
         private string model;
         private string connectionType;
-        public int version = 1 ;
+        protected int version = 1;
 
         public ElectricProduct(string name, string connectionType)
         {
@@ -40,9 +55,13 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
         public static int idGenerator = 0; // Gives id's number
 
 
+        public virtual string GetDetails()
+        {
+            return $"id={this.id}, name={this.model}, connection type = {this.connectionType}, version={this.version}";
+        }
         public void DisplayDetails()
         {
-            Console.WriteLine($"id={this.id}, name={this.model}, connection type = {this.connectionType}, version={this.version}");
+            Console.WriteLine(GetDetails());
         }
     }
 
@@ -50,7 +69,7 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
     {
         private string manufacturer;
 
-        public GameConsole(string manufacturer , string model, string connectionType) : base(model, connectionType)
+        public GameConsole(string manufacturer, string model, string connectionType) : base(model, connectionType)
         {
             this.manufacturer = manufacturer;
         }
@@ -71,6 +90,10 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
             this.manufacturer = manufacturer;
             this.mhz = mhz;
         }
+        public override string GetDetails()
+        {
+            return base.GetDetails() + $" manufacturer={this.manufacturer}, mhz={this.mhz}";
+        }
     }
 
     public class SmartTV : Monitor
@@ -82,12 +105,12 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
             this.smart = smart;
         }
 
-        public override string ToString()
+        public void DisplaySmartFunction()
         {
             if (this.smart == true)
-                return "That monitor has Smart function";
+                Console.WriteLine("That monitor has Smart function");
             else
-                return "Has no smart function";
+                Console.WriteLine("Has no smart function");
         }
     }
 
