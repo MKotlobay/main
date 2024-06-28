@@ -14,11 +14,16 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
             GameConsole sonyConsole = new GameConsole("sony", "PS5", "AC");
 
             sonyConsole.DisplayDetails();
+
+            sonyConsole.SetVersion(2);
+
+            sonyConsole.DisplayDetails();
         }
 
         private int id;
         private string model;
         private string connectionType;
+        public int version = 1 ;
 
         public ElectricProduct(string name, string connectionType)
         {
@@ -27,12 +32,17 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
             this.connectionType = connectionType;
         }
 
+        public virtual void SetVersion(int version)
+        {
+            this.version = version;
+        }
+
         public static int idGenerator = 0; // Gives id's number
 
 
         public void DisplayDetails()
         {
-            Console.WriteLine($"id={this.id}, name={this.model}, connection type = {this.connectionType}");
+            Console.WriteLine($"id={this.id}, name={this.model}, connection type = {this.connectionType}, version={this.version}");
         }
     }
 
@@ -43,6 +53,11 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
         public GameConsole(string manufacturer , string model, string connectionType) : base(model, connectionType)
         {
             this.manufacturer = manufacturer;
+        }
+
+        public override void SetVersion(int version)
+        {
+            this.version = version;
         }
     }
 
