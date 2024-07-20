@@ -19,6 +19,10 @@ public class Program
 
         //DemoList.test();
 
-        Test.Test3();
+        //Test.Test3();
+
+        ZooTheWorkers zooWorkers = new ZooTheWorkers();
+        zooWorkers.testZoo();
+
     }
 }
