@@ -15,14 +15,14 @@ public class Program
 
         //StockExchange.StockMarket(); // Home work for 24.05.2024
 
-        //ElectricProduct.Test();
+        ElectricProduct.Test();
 
         //DemoList.test();
 
         //Test.Test3();
 
-        ZooTheWorkers zooWorkers = new ZooTheWorkers();
-        zooWorkers.testZoo();
+        //ZooTheWorkers zooWorkers = new ZooTheWorkers();
+        //zooWorkers.testZoo();
 
     }
 }

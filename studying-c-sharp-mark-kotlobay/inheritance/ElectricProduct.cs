@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,28 +10,46 @@ namespace studying_c_sharp_mark_kotlobay.inheritance
 {
     public class ElectricProduct
     {
+        public static void ShowPoly(ElectricProduct aaa)
+        {
+            Console.WriteLine(aaa.GetDetails());
+        }
         public static void Test()
         {
             #region Build console + override
             GameConsole sonyConsole = new GameConsole("sony", "PS5", "AC");
 
-            sonyConsole.DisplayDetails();
+            //sonyConsole.DisplayDetails();
 
-            sonyConsole.SetVersion(2);
+            //sonyConsole.SetVersion(2);
 
-            sonyConsole.DisplayDetails();
+            //sonyConsole.DisplayDetails();
             #endregion End build console + override
 
             #region Upcasting / Downcasting && Using is
             SmartTV SmartLGMonitor = new SmartTV(true, "lgMonitor", 100, "OLED75C3", "HDMI 2.1");
-            SmartLGMonitor.DisplaySmartFunction();
+            //SmartLGMonitor.DisplaySmartFunction();
 
-            if (SmartLGMonitor is SmartTV)
+            //if (SmartLGMonitor is SmartTV)
+            //{
+            //    Monitor lgMonitor = (Monitor)SmartLGMonitor; // Only possible to cast from lower to higher
+            //    lgMonitor.DisplayDetails();
+            //}
+
+            #region Test with Izhar
+            ElectricProduct[] arr = new ElectricProduct[5];
+            arr[0] = sonyConsole;
+            arr[1] = SmartLGMonitor;
+            arr[2] = new SmartTV(true, "aaa", 100, "OLED55C3", "HDMI 2.1");
+            arr[3] = new PcAccessories("Asus", "Red", "Astrix", "HDMI 2.1");
+            arr[4] = new GameConsole("Microsoft", "XBOX X", "AC");
+
+            for (int i = 0; i < arr.Length; i++)
             {
-                Monitor lgMonitor = (Monitor)SmartLGMonitor; // Only possible to cast from lower to higher
-                lgMonitor.DisplayDetails();
+                Console.WriteLine(arr[i].GetDetails());
             }
-                
+            ShowPoly(SmartLGMonitor);
+            #endregion End test with Izhar
 
             #endregion End Upcasting / Downcasting && Using is
         }
